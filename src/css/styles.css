@@ -11,6 +11,8 @@ body {
   position: relative;
   min-height: 100%;
   font-family: 'Open Sans', '微軟正黑體', 'sans-serif';
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 h1 {
   font-size: 1.7em;
@@ -57,6 +59,14 @@ p {
   margin-right: 20px;
   color: #999;
   cursor: pointer;
+}
+.menu li:hover {
+  transition: color 0.2s;
+  color: #8bbaba;
+}
+.menu li:hover svg:hover {
+  transition: color 0.2s;
+  fill: #8bbaba;
 }
 .menu .current {
   color: #444;
@@ -151,16 +161,20 @@ p {
 .container .postList li {
   cursor: pointer;
   margin-bottom: 20px;
+  color: #333;
 }
 .container .postList li .time {
   display: inline-block;
   margin-right: 10px;
   font-size: 0.8em;
-  color: #8bbaba;
 }
 .container .postList li .listTitle {
   display: inline-block;
   margin: 0 auto;
+}
+.container .postList li:hover {
+  transition: color 0.2s;
+  color: #8bbaba;
 }
 .footer {
   position: absolute;

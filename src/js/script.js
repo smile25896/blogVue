@@ -31,7 +31,8 @@ function computeCanvas(){
 	const html = document.documentElement;
 	canvas.width = document.querySelector('body').offsetWidth-1	;
 	canvas.height = Math.max( body.scrollHeight, body.offsetHeight, 
-		                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+		                       html.clientHeight, html.scrollHeight,
+		                       html.offsetHeight)-1;
 }
 
 //當mouseDown時觸發，設定筆刷的開始位置
@@ -83,19 +84,18 @@ function clickDraw(){
 	const ctrls = document.querySelectorAll('.ctrl');
 	//隱藏or打開畫布
 	canvas.classList.toggle('hidden');
-	const drawBtns = document.querySelectorAll('.drawBtn');
-	const blackPaint = `<img class="icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgMTkuMjkxIDE5LjI5MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTkuMjkxIDE5LjI5MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGQ9Ik03LjYyMSwxMC4yNjdjLTAuMzY3LDAuNDA0LTAuNDU3LDAuNjk0LTAuOTM4LDEuNDU0YzAuMzExLDAuMjE3LDAuOTA4LDAuNzE4LDEuMzIyLDEuNTgxICAgYzAuODI3LTAuNDc1LDEuMjEzLTAuNTQ3LDEuNjUxLTAuOTE2YzIuODYyLTIuNDEsOS44Ny0xMS4wNDksOS42MjktMTEuMjk5QzE5LjAzMiwwLjgyMiwxMC4xNDEsNy41MDMsNy42MjEsMTAuMjY3eiBNNS44NTcsMTIuMzkyICAgYy0xLjI0My0wLjIyLTIuNDcsMC41NjYtMy4yODksMi41M2MtMC44MiwxLjk2NC0yLjI4NCwyLjc1LTIuNTY4LDIuNzAyYzEuNTI4LDAuNTUzLDYuMTg4LDEuOTY3LDcuMzQ2LTMuNDE2ICAgQzYuODU0LDEyLjkxNyw1Ljg1NywxMi4zOTIsNS44NTcsMTIuMzkyeiIgZmlsbD0iIzQ0NDQ0NCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />`;
-	const grayPaint = `<img class="icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgMTkuMjkxIDE5LjI5MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTkuMjkxIDE5LjI5MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGQ9Ik03LjYyMSwxMC4yNjdjLTAuMzY3LDAuNDA0LTAuNDU3LDAuNjk0LTAuOTM4LDEuNDU0YzAuMzExLDAuMjE3LDAuOTA4LDAuNzE4LDEuMzIyLDEuNTgxICAgYzAuODI3LTAuNDc1LDEuMjEzLTAuNTQ3LDEuNjUxLTAuOTE2YzIuODYyLTIuNDEsOS44Ny0xMS4wNDksOS42MjktMTEuMjk5QzE5LjAzMiwwLjgyMiwxMC4xNDEsNy41MDMsNy42MjEsMTAuMjY3eiBNNS44NTcsMTIuMzkyICAgYy0xLjI0My0wLjIyLTIuNDcsMC41NjYtMy4yODksMi41M2MtMC44MiwxLjk2NC0yLjI4NCwyLjc1LTIuNTY4LDIuNzAyYzEuNTI4LDAuNTUzLDYuMTg4LDEuOTY3LDcuMzQ2LTMuNDE2ICAgQzYuODU0LDEyLjkxNyw1Ljg1NywxMi4zOTIsNS44NTcsMTIuMzkyeiIgZmlsbD0iI2FiYWJhYiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />`;
-
+	const drawBtn = document.querySelectorAll('.drawBtn');
+	const icons = document.querySelectorAll('.drawBtn svg path');
+	
 	//依照畫畫狀態，設定icon灰色或黑色，和打開or隱藏左下角的畫圖控制窗
-	drawBtns.forEach(function(drawBtn){
+	icons.forEach(function(icon){
 		if(!isOpneCanvas){
 			drawCtrl.style.bottom = "0px";
-			drawBtn.innerHTML = blackPaint;
+			icon.style.fill = "rgb(50, 50, 50)";
 		}
 		else{
 			drawCtrl.style.bottom = "-84px";
-			drawBtn.innerHTML = grayPaint;
+			icon.style.fill = "rgb(171, 171, 171)";
 		}
 	})
 	isOpneCanvas = !isOpneCanvas;
