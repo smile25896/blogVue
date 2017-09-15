@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="./src/css/reset.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./src/css/styles.css">
+	<title>Cathy</title>
+</head>
+<body>
+	<canvas id="draw" class="hidden"></canvas>
+	<div class="header">
+		<h1 class="title">Cathy P</h1>
+		<ul class="menu">
+			<li class="list current">列表</li>
+			<li>分類</li>
+			<li class="drawBtn">
+				<img class="icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgMTkuMjkxIDE5LjI5MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTkuMjkxIDE5LjI5MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGQ9Ik03LjYyMSwxMC4yNjdjLTAuMzY3LDAuNDA0LTAuNDU3LDAuNjk0LTAuOTM4LDEuNDU0YzAuMzExLDAuMjE3LDAuOTA4LDAuNzE4LDEuMzIyLDEuNTgxICAgYzAuODI3LTAuNDc1LDEuMjEzLTAuNTQ3LDEuNjUxLTAuOTE2YzIuODYyLTIuNDEsOS44Ny0xMS4wNDksOS42MjktMTEuMjk5QzE5LjAzMiwwLjgyMiwxMC4xNDEsNy41MDMsNy42MjEsMTAuMjY3eiBNNS44NTcsMTIuMzkyICAgYy0xLjI0My0wLjIyLTIuNDcsMC41NjYtMy4yODksMi41M2MtMC44MiwxLjk2NC0yLjI4NCwyLjc1LTIuNTY4LDIuNzAyYzEuNTI4LDAuNTUzLDYuMTg4LDEuOTY3LDcuMzQ2LTMuNDE2ICAgQzYuODU0LDEyLjkxNyw1Ljg1NywxMi4zOTIsNS44NTcsMTIuMzkyeiIgZmlsbD0iI2FiYWJhYiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
+			</li>
+			<input type="text" name="">
+			<button>
+				<!-- <img src="src/img/search.png"> -->
+				<i class="fa fa-search"></i>
+			</button>
+		</ul>
+	</div>
+	<ul class="drawCtrl">
+		<li class="drawBtn">
+			<img class="icon" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgMTkuMjkxIDE5LjI5MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTkuMjkxIDE5LjI5MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxwYXRoIGQ9Ik03LjYyMSwxMC4yNjdjLTAuMzY3LDAuNDA0LTAuNDU3LDAuNjk0LTAuOTM4LDEuNDU0YzAuMzExLDAuMjE3LDAuOTA4LDAuNzE4LDEuMzIyLDEuNTgxICAgYzAuODI3LTAuNDc1LDEuMjEzLTAuNTQ3LDEuNjUxLTAuOTE2YzIuODYyLTIuNDEsOS44Ny0xMS4wNDksOS42MjktMTEuMjk5QzE5LjAzMiwwLjgyMiwxMC4xNDEsNy41MDMsNy42MjEsMTAuMjY3eiBNNS44NTcsMTIuMzkyICAgYy0xLjI0My0wLjIyLTIuNDcsMC41NjYtMy4yODksMi41M2MtMC44MiwxLjk2NC0yLjI4NCwyLjc1LTIuNTY4LDIuNzAyYzEuNTI4LDAuNTUzLDYuMTg4LDEuOTY3LDcuMzQ2LTMuNDE2ICAgQzYuODU0LDEyLjkxNyw1Ljg1NywxMi4zOTIsNS44NTcsMTIuMzkyeiIgZmlsbD0iI2FiYWJhYiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />
+		</li>
+		<li class="ctrl">
+			<input class="colorInput" type="color" value="#8cd9cc" name="">
+			<img class="icon color" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgNDU5IDQ1OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDU5IDQ1OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxnIGlkPSJwYWxldHRlIj4KCQk8cGF0aCBkPSJNMjI5LjUsMEMxMDIsMCwwLDEwMiwwLDIyOS41UzEwMiw0NTksMjI5LjUsNDU5YzIwLjQsMCwzOC4yNS0xNy44NSwzOC4yNS0zOC4yNWMwLTEwLjItMi41NS0xNy44NS0xMC4yLTI1LjUgICAgYy01LjEtNy42NS0xMC4yLTE1LjMtMTAuMi0yNS41YzAtMjAuNCwxNy44NTEtMzguMjUsMzguMjUtMzguMjVoNDUuOWM3MS40LDAsMTI3LjUtNTYuMSwxMjcuNS0xMjcuNUM0NTksOTEuOCwzNTcsMCwyMjkuNSwweiAgICAgTTg5LjI1LDIyOS41Yy0yMC40LDAtMzguMjUtMTcuODUtMzguMjUtMzguMjVTNjguODUsMTUzLDg5LjI1LDE1M3MzOC4yNSwxNy44NSwzOC4yNSwzOC4yNVMxMDkuNjUsMjI5LjUsODkuMjUsMjI5LjV6ICAgICBNMTY1Ljc1LDEyNy41Yy0yMC40LDAtMzguMjUtMTcuODUtMzguMjUtMzguMjVTMTQ1LjM1LDUxLDE2NS43NSw1MVMyMDQsNjguODUsMjA0LDg5LjI1UzE4Ni4xNSwxMjcuNSwxNjUuNzUsMTI3LjV6ICAgICBNMjkzLjI1LDEyNy41Yy0yMC40LDAtMzguMjUtMTcuODUtMzguMjUtMzguMjVTMjcyLjg1LDUxLDI5My4yNSw1MXMzOC4yNSwxNy44NSwzOC4yNSwzOC4yNVMzMTMuNjUsMTI3LjUsMjkzLjI1LDEyNy41eiAgICAgTTM2OS43NSwyMjkuNWMtMjAuNCwwLTM4LjI1LTE3Ljg1LTM4LjI1LTM4LjI1UzM0OS4zNSwxNTMsMzY5Ljc1LDE1M1M0MDgsMTcwLjg1LDQwOCwxOTEuMjVTMzkwLjE1LDIyOS41LDM2OS43NSwyMjkuNXoiIGZpbGw9IiNhYmFiYWIiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+		</li>
+		<li class="ctrl clear">清除</li>
+	</ul>
+	<div class="container">
+	</div>
+	<div class="footer">Icons made by <a href="https://www.flaticon.com/authors/vectorgraphit" title="Vectorgraphit">Vectorgraphit</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+<script src="./src/js/script.js"></script>
+</body>
+</html>

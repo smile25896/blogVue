@@ -1,0 +1,174 @@
+*
+	box-sizing: border-box
+	
+a
+	text-decoration: none
+
+body
+	display: relative
+	font-family: 'Open Sans', '微軟正黑體', 'sans-serif'
+	// background-color: #fff
+
+h1
+	font-size: 1.7em
+	margin-top: 25px
+	margin-bottom: 25px
+	font-weight: 500
+	
+p
+	margin-bottom: 10px
+	// z-index: 100
+		
+.hidden
+	display: none
+	
+#draw
+	position: absolute
+	top: 0
+	left: 0
+	z-index: 1
+	margin: 0px
+	
+.header
+	position: relative
+	display: flex
+	padding-top: 15px
+	padding-bottom: 15px
+	border-bottom: 1px #eee solid
+	z-index: 2
+
+.title
+	font-size: 1.5em
+	position: relative
+	margin: 20px
+	margin-left: 60px
+	letter-spacing: 0.15em
+	
+.menu
+	position: absolute
+	margin-top: 17px
+	right: 50px
+	
+	li
+		float: left
+		margin-top: 10px
+		margin-right: 20px
+		color: #999
+		cursor: pointer
+		
+	.current
+		color: #444
+		
+	.icon
+		position: relative
+		top: -2px
+		width: 18px
+		height: 18px
+		
+	input
+		float: left
+		margin-right: 0
+		margin-top: 5px
+		padding-left: 7px
+		padding-right: 7px
+		width: 80px
+		height: 25px
+		border: 1px #ddd solid
+		border-right: 0px
+		color: #999
+		
+	input:focus
+		outline: none
+		
+	button
+		margin-top: 5px
+		width: 25px
+		height: 25px
+		padding: 4px
+		background-color: #a9d6d6
+		// background-color: #ccc
+		text-decoration: none
+		border: 0px
+		
+	.fa
+		color: #fff
+		
+	img
+		width: 100%
+		
+	button:focus
+		outline: none	
+		
+.drawCtrl
+	position: fixed
+	left: 20px
+	bottom: 0
+	bottom: -84px
+	transition: all 0.5s
+	padding-bottom: 10px
+	z-index: 2
+	text-align: center
+	background-color: #fff
+	border: 1px #bbb dotted
+	
+	li
+		cursor: pointer
+		margin: 10px
+		margin-top: 20px
+		
+		.icon
+			height: 22px
+			width: 22px
+			
+		.colorInput
+			cursor: pointer
+			height: 22px
+			width: 22px
+			position: absolute
+			opacity: 0
+
+.container
+	width: 600px
+	margin: 0 auto
+	margin-top: 0
+	padding: 20px
+	border-radius: 3px
+	line-height: 1.8em
+	// text-align: center
+		
+	h1
+		letter-spacing: 0.1em
+
+	img
+		width: 70%
+		
+	.postList
+		// text-align: center
+		margin-top: 20px
+		padding-left: 90px
+		font-size: 1.5em
+		
+		li
+			cursor: pointer
+			margin-bottom: 20px
+			
+			.time
+				display: inline-block
+				margin-right: 10px
+				font-size: 0.8em
+				color: #8bbaba
+			
+			.listTitle
+				display: inline-block
+				margin: 0 auto
+		
+.footer
+	display: absolute;
+	bottom: 0
+	margin-top: 120px
+	margin-bottom: 20px
+	text-align: center
+	font-size: 0.7em
+	
+	a
+		color: #444
