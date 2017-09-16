@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', getPostList);
+document.addEventListener('DOMContentLoaded', function(){hljs.initHighlightingOnLoad();});
 window.addEventListener("mousedown", startPaint, false);
 window.addEventListener("mousemove", paint, false);
 window.addEventListener("mouseup", endPaint, false);
@@ -128,6 +129,7 @@ function clickPost(){
 	xhttp.onload = function(){
 		if(this.readyState === 4 && this.status == 200){
 			container.innerHTML = xhttp.responseText;
+			highLight();
 			computeCanvas();
 		}
 		else{
@@ -173,4 +175,10 @@ function getPostList(){
 			console.log("no");
 		}
 	}
+}
+
+function highLight(){
+	document.querySelectorAll('pre code').forEach(function(block) {
+	  hljs.highlightBlock(block);
+	});	
 }

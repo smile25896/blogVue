@@ -1,0 +1,19 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Cathy P's blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smile25896/smile25896.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smile25896/smile25896.github.io/issues"
+  },
+  "homepage": "https://github.com/smile25896/smile25896.github.io#readme"
+}
