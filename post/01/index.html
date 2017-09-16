@@ -1,14 +1,67 @@
-<h1>你好</h1>
-		<!-- <img src="https://<s></s>tatic.pexels.com/photos/418831/pexels-photo-418831.jpeg" alt=""><br> -->
+<h1>JavaScript30：第一天筆記</h1>
 
-		<p>
-		　　S.H.E 11日合體開趴歡慶成軍16周年，3人選在「吉時」9點11分直播，90分鐘的派對笑淚交織，吸引線上最高觀看3.5萬、大陸網站百萬粉絲關注，除了細數當年趣事，更加碼演唱〈美麗新世界〉、〈老婆〉。3人感動直飆淚，大方以女女吻表達愛意，Hebe表示：「S.H.E占據人生的一半，我愛S. H. E就如同我愛著我的人生一樣。謝謝我最親愛的姊妹！」Ella感性說：「慶幸生命中的每個重要時刻妳們都在，給我力量，給我支持。我們的故事未完待續。」
-		</p>
-		
-		<p>
-		　　Ella出賣好姊妹素顏照，是一張Selina與Hebe、兒子勁寶（Daniel）合照，自豪「手機裡最愛照片之一大方送，最新高顏值素顏團體SHD」，勁寶成了她們生活話題，Ella無厘頭說：「孩子會大，有一天會跟別的女人睡覺，生女兒也是。」3人年底將推出復刻卡帶組《小時帶》，自封「跨時代的歌手」，Hebe說明「因為我們經歷過卡帶時期啊」。
-		</p>
+<img src="/post/01/01.png">
 
-		<p>
-		　　Ella出賣好姊妹素顏照，是一張Selina與Hebe、兒子勁寶（Daniel）合照，自豪「手機裡最愛照片之一大方送，最新高顏值素顏團體SHD」，勁寶成了她們生活話題，Ella無厘頭說：「孩子會大，有一天會跟別的女人睡覺，生女兒也是。」3人年底將推出復刻卡帶組《小時帶》，自封「跨時代的歌手」，Hebe說明「因為我們經歷過卡帶時期啊」。
-		</p>
+<h2 class="primary">實現目標</h2>
+<p>
+	寫出鍵盤打擊樂。當敲擊鍵盤由A至L的位置時，頁面上的按鈕會變亮，且會發出聲音。
+</p>
+<h2 class="primary">詳細步驟：</h2>
+<blockquote>
+	<ol>
+		<li>1.  聆聽鍵盤按下去的事件</li>
+		<li>2.  判斷按下去的按鍵，並對相應的div和audio做處理</li>
+		<li>3.  鍵盤放開後，要回復原狀</li>
+	</ol>
+</blockquote>
+
+<h3>
+	1.  聆聽鍵盤按下去(keydown)的事件
+</h3>
+<ul class="circle">
+	<li>提示： <span class="highLight">HTML5 Event</span> </li>
+</ul>
+<p class="small">
+	當鍵盤按下時，執行 <span class='highLight'>function playSound()</span> ，並將event裡的 <span class="highLight">keyCode</span> (會記錄按下鍵的碼)
+</p>
+<pre><code data-lang="js">window.addEventListener("keydown", function(e){
+	playSound(e.keyCode);
+})</code></pre>
+
+<h3>
+	2.  判斷按下去的按鍵，並對相應的div和audio做處理
+</h3>
+<ul class="circle">
+	<li>提示：透過 <span class='highLight'>querySelector()</span> 去選擇 <span class='highLight'>data-key</span> 的屬性 </li>
+</ul>
+<p class="small">
+	<span class='highLight'>function playSound()</span> ：先選取到相對應 key 的 div 和 audio <br>
+	css選擇規則中：屬性是用 [ ] 來選取，例如：div[data-key="1"] <br>
+	如果沒有對應的 audio ，則回傳，不繼續執行。 <br>
+	將選到的 div 的 class 加上 playing <br>
+	並播放audio，為了讓每次按下去都同重頭播放音效，在播放設定 <span class='highLight'>currentTime = 0;</span>
+</p>
+<pre><code data-lang="js">function playSound(keyCode){
+  const key = document.querySelector(`div[data-key="${keyCode}"]`);
+  const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+  if (!audio) return;
+
+  key.classList.add('playing');
+  audio.currentTime = 0;
+  audio.play();
+}</code></pre>
+
+<h3>
+	3.  鍵盤放開後，要回復原狀
+</h3>
+<p class="small">
+	當transition動畫跑完時，從class中移除playing
+</p>
+<pre><code data-lang="js">const keys = document.querySelectorAll('.key');
+for(let key of keys){
+  key.addEventListener("transitionend", removeClass);
+}
+
+function removeClass(){
+  this.classList.remove('playing');
+}</code></pre>
