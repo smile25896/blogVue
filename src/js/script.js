@@ -16,7 +16,7 @@ let isOpneCanvas = false;
 let isMousedown = false;
 // let hue = 170;
 //設定筆刷顏色、寬度、起始位置
-let paintColor = "#8cd9cc"
+let paintColor = "#a9d6d6"
 let lineWidth = 5;
 // let isWidthAdd = true;
 let startX, startY;
