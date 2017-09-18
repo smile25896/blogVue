@@ -48,12 +48,17 @@ blockquote {
   border-left: 5px #a9d6d6 solid;
   padding-left: 20px;
 }
+code {
+  font-family: 'Inconsolata', monospace;
+}
 pre code {
   display: inline-block;
-  padding: 20px;
+  padding: 1.5em;
   width: 100%;
   border-radius: 8px;
-  font-family: 'Inconsolata', monospace;
+}
+.hljs {
+  padding: 1em;
 }
 ul.circle {
   padding-left: 1.5em;
@@ -191,7 +196,7 @@ ul.circle li:before {
   opacity: 0;
 }
 .container {
-  width: 600px;
+  max-width: 630px;
   margin: 0 auto;
   margin-top: 0;
   padding: 20px;
