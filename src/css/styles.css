@@ -105,36 +105,36 @@ ul.circle li:before {
   margin-left: 60px;
   letter-spacing: 0.15em;
 }
-.menu {
+.menuBar {
   position: absolute;
   margin-top: 17px;
   right: 50px;
 }
-.menu li {
+.menuBar li {
   float: left;
   margin-top: 10px;
   margin-right: 20px;
   color: #999;
   cursor: pointer;
 }
-.menu li:hover {
+.menuBar li:hover {
   transition: color 0.2s;
   color: #8bbaba;
 }
-.menu li:hover svg:hover {
+.menuBar li:hover svg:hover {
   transition: color 0.2s;
   fill: #8bbaba;
 }
-.menu .current {
+.menuBar .current {
   color: #444;
 }
-.menu .icon {
+.menuBar .icon {
   position: relative;
   top: -2px;
   width: 18px;
   height: 18px;
 }
-.menu input {
+.menuBar input {
   float: left;
   margin-right: 0;
   margin-top: 5px;
@@ -146,10 +146,10 @@ ul.circle li:before {
   border-right: 0px;
   color: #999;
 }
-.menu input:focus {
+.menuBar input:focus {
   outline: none;
 }
-.menu button {
+.menuBar button {
   margin-top: 5px;
   width: 25px;
   height: 25px;
@@ -158,13 +158,13 @@ ul.circle li:before {
   text-decoration: none;
   border: 0px;
 }
-.menu .fa {
+.menuBar .fa {
   color: #fff;
 }
-.menu img {
+.menuBar img {
   width: 100%;
 }
-.menu button:focus {
+.menuBar button:focus {
   outline: none;
 }
 .drawCtrl {
