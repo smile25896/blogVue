@@ -92,7 +92,7 @@ ul.circle
 .primary
 	color: primary
 	
-#draw
+#drawBoard
 	position: absolute
 	top: 0
 	left: 0
@@ -114,8 +114,9 @@ ul.circle
 	margin: 20px
 	margin-left: 60px
 	letter-spacing: 0.15em
+	cursor: default
 	
-.menuBar
+.menu
 	position: absolute
 	margin-top: 17px
 	right: 50px
@@ -181,7 +182,6 @@ ul.circle
 .drawCtrl
 	position: fixed
 	left: 20px
-	bottom: 0
 	bottom: -84px
 	transition: all 0.5s
 	padding-bottom: 10px
@@ -231,6 +231,7 @@ ul.circle
 		li
 			cursor: pointer
 			margin-bottom: 20px
+			list-style-type:none
 			color: #333
 			
 			.time
