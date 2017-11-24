@@ -1,0 +1,61 @@
+<h1>JavaScript30：第二天筆記</h1>
+
+<img src="/post/02/01.png">
+
+<h2 class="primary">實現目標</h2>
+<p>
+	製作一個有時針、分針和秒針的時鐘！
+</p>
+<h2 class="primary">詳細步驟：</h2>
+<blockquote>
+	<ol>
+		<li>1.  取得當前時間</li>
+		<li>2.  對應指針做出旋轉效果</li>
+		<li>3.  每秒改變一次旋轉角度</li>
+	</ol>
+</blockquote>
+
+<h3>
+	1.  取得當前時間
+</h3>
+<p class="small">
+	透過<span class='highLight'>Date</span>物件，取得現在的時間。
+</p>
+<pre><code class="javascript">function setClock(){
+  var date = new Date;
+  var hour = date.getHours();	//取得小時
+  var min = date.getMinutes();	//取得分鐘
+  var sec = date.getSeconds();	//取得秒鐘
+}</code></pre>
+
+<h3>
+	2.  對應指針做出旋轉效果
+</h3>
+<ul class="circle">
+	<li>提示：計算角度，用CSS <span class='highLight'>transform</span>的<span class='highLight'>rotate</span> 去調整指針</li>
+</ul>
+<p class="small">
+	css transform:
+	<span class='highLight'>transform-origin</span>設成<span class='highLight'>right</span>，讓指針旋轉的基準點在右邊（也就是時鐘圓心的位置）;<br>
+	此時<span class='highLight'>transform-rotate: 0</span>會指向9點鐘的位置<br>
+	秒針角度：(360/60)*秒+90<br>
+	分針角度：(360/60)*分+90<br>
+	時針角度：(360/12)*(時%12)+90<br>
+</p>
+<pre><code data-lang="js">function setClock(){
+  //.......
+  var hourDeg = (hour%12)*30+90;
+  var minDeg = min*6+90;
+  var secDeg = sec*6+90;
+  document.querySelector(".hour-hand").style.transform = `rotate(${hourDeg}deg)`;
+  document.querySelector(".min-hand").style.transform = `rotate(${minDeg}deg)`;
+  document.querySelector(".second-hand").style.transform = `rotate(${secDeg}deg)`;
+}</code></pre>
+
+<h3>
+	3.  每秒改變一次旋轉角度
+</h3>
+<p class="small">
+	<span class='highLight'>setInterval(function, 毫秒)</span>設定多少毫秒執行一次function
+</p>
+<pre><code data-lang="js">setInterval(setClock, 1000);</code></pre>
