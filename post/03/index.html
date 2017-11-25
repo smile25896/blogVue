@@ -1,0 +1,71 @@
+<h1>JavaScript30：第三天筆記</h1>
+
+<img src="/post/03/01.png">
+
+<h2 class="primary">實現目標</h2>
+<p>
+	利用HTML的input改變圖片的邊框顏色、寬度以及圖片的模糊程度。
+</p>
+<h2 class="primary">詳細步驟：</h2>
+<blockquote>
+	<ol>
+		<li>1.  取得HTML的input，並增加事件監聽。</li>
+		<li>2.  CSS變數</li>
+		<li>3.  使用JS去改變CSS變數</li>
+	</ol>
+</blockquote>
+
+<h3>
+	1.  取得HTML的input，並增加事件監聽。
+</h3>
+<p class="small">
+	利用<span class='highLight'>document.querySelectorAll()</span>取得所有input物件，並在input的value發生改變以及滑鼠移動過去時，觸發事件。
+</p>
+<pre><code class="javascript">const inputs = document.querySelectorAll('.controls input');
+inputs.forEach(input => input.addEventListener('change', changeProperty));
+inputs.forEach(input => input.addEventListener('mousemove', changePropertya));
+}</code></pre>
+
+<h3>
+	2.  CSS變數
+</h3>
+<p class="small">
+	<span class='highLight'>:root</span> 代表設定全域的CSS變數。<br>
+	<span class='highLight'>--</span>後面接變數名稱，<span class='highLight'>:</span>後是該變數值。
+</p>
+<pre><code data-lang="css">//宣告一個global的CSS變數
+:root {
+  --spacing: 10px;
+  --base: #ffbbaa;
+  --blur: 0px;
+}
+
+//使用global的CSS變數
+img{
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+}</code></pre>
+
+<h3>
+	3.  使用JS去改變CSS變數
+</h3>
+<p class="small">
+	CSS中的padding和filter是有<span class='highLight'>px單位</span>的，background則無。<br>
+	因此先在HTML的spacing和blurinput中設定<span class='highLight'>data-sizing</span>為"px"，base則不設定
+</p>
+<pre><code data-lang="html">&lt;label for=&quot;spacing&quot;&gt;Spacing:&lt;/label&gt;
+&lt;input id=&quot;spacing&quot; type=&quot;range&quot; name=&quot;spacing&quot; min=&quot;10&quot; max=&quot;200&quot; value=&quot;10&quot; data-sizing=&quot;px&quot;&gt;
+
+&lt;label for=&quot;blur&quot;&gt;Blur:&lt;/label&gt;
+&lt;input id=&quot;blur&quot; type=&quot;range&quot; name=&quot;blur&quot; min=&quot;0&quot; max=&quot;25&quot; value=&quot;0&quot; data-sizing=&quot;px&quot;&gt;
+
+&lt;label for=&quot;base&quot;&gt;Base Color&lt;/label&gt;
+&lt;input id=&quot;base&quot; type=&quot;color&quot; name=&quot;base&quot; value=&quot;#ffbbaa&quot;&gt;</code></pre>
+<p class="small">
+	利用<span class='highLight'>document.documentElement.style.setProperty('屬性', '值')</span><br>去設定CSS變數的value為該input的value，並加上剛剛設定的sizing單位。
+</p>
+<pre><code data-lang="html">function change(){
+  var sizing = this.dataset.sizing || "";
+  document.documentElement.style.setProperty(`--${this.name}`, this.value + sizing);
+}</code></pre>
