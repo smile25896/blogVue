@@ -8,8 +8,9 @@ const brushIcon = `<svg class="icon brushIcon" xmlns="http://www.w3.org/2000/svg
 
 var paintColor = "#a9d6d6";
 
-window.addEventListener('resize', testMobile);
-window.addEventListener('load', testMobile);
+window.addEventListener('resize', testMobile, false);
+window.addEventListener('load', testMobile, false);
+window.addEventListener('click', hiddenMenu, false)
 
 function testMobile(){
 	let width = document.documentElement.clientWidth;
@@ -19,6 +20,10 @@ function testMobile(){
 	else{
 		header.mobile = true;
 	}
+}
+
+function hiddenMenu(){
+	header.open = false;
 }
 
 var container = new Vue({
@@ -59,7 +64,6 @@ var header = new Vue({
 		getPostList: getPostList,
 		clickBrushIcon: clickBrushIcon,
 		clickMenuIcon: function(){
-			console.log("click")
 			this.open = !this.open;
 		}
 	}

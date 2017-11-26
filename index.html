@@ -20,7 +20,7 @@
 	<!-- 最上面的header -->
 	<div class="header">
 		<h1 class="title">{{title}}</h1>
-		<div class="menuBtn" v-on:click="clickMenuIcon">
+		<div class="menuBtn" v-on:click.stop="clickMenuIcon">
 			<img v-bind:src="icon.menu" />
 		</div>
 		<ul class="menu" v-if="!mobile || open">
