@@ -225,17 +225,19 @@ ul.circle li:before {
   font-size: 1.2em;
 }
 .container .postList li {
+  display: flex;
   cursor: pointer;
   margin-bottom: 20px;
   list-style-type: none;
   color: #333;
 }
 .container .postList li .time {
+  flex: 1;
   display: inline-block;
-  margin-right: 10px;
   font-size: 0.8em;
 }
 .container .postList li .listTitle {
+  flex: 3.5;
   display: inline-block;
   margin: 0 auto;
 }
@@ -284,5 +286,15 @@ ul.circle li:before {
   }
   .container .postList {
     padding-left: 0px;
+  }
+  .container .postList li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .container .postList li .listTitle {
+    margin: 0px;
+  }
+  .container .postList li .time {
+    color: #aaa;
   }
 }

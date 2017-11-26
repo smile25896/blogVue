@@ -237,18 +237,21 @@ ul.circle
 		font-size: 1.2em
 		
 		li
+			display: flex
 			cursor: pointer
 			margin-bottom: 20px
 			list-style-type:none
 			color: #333
 			
 			.time
+				flex: 1
 				display: inline-block
-				margin-right: 10px
+				// margin-right: 10px
 				font-size: 0.8em
 				// color: #8bbaba
 			
 			.listTitle
+				flex: 3.5
 				display: inline-block
 				margin: 0 auto
 				
@@ -296,3 +299,13 @@ ul.circle
 	.container
 		.postList
 			padding-left: 0px
+			
+			li
+				flex-direction: column
+				align-items:flex-start
+				
+				.listTitle
+					margin: 0px
+					
+				.time
+					color: #AAA
