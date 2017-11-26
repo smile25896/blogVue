@@ -8,6 +8,19 @@ const brushIcon = `<svg class="icon brushIcon" xmlns="http://www.w3.org/2000/svg
 
 var paintColor = "#a9d6d6";
 
+window.addEventListener('resize', testMobile);
+window.addEventListener('load', testMobile);
+
+function testMobile(){
+	let width = document.documentElement.clientWidth;
+	if(width > 530){
+		header.mobile = false;
+	}
+	else{
+		header.mobile = true;
+	}
+}
+
 var container = new Vue({
 	el: '.container',
 	data:{
@@ -35,12 +48,20 @@ var header = new Vue({
 		title: "Cathy P",
 		menu: ["列表", "分類"],
 		current: 0,
+		open: false,
+		mobile: false,
 		icon: {
-			brush: brushIcon}
+			brush: brushIcon,
+			menu: "data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDkxLjMxOCwyMzUuMzE4SDIwLjY4MkM5LjI2LDIzNS4zMTgsMCwyNDQuNTc3LDAsMjU2czkuMjYsMjAuNjgyLDIwLjY4MiwyMC42ODJoNDcwLjYzNiAgICBjMTEuNDIzLDAsMjAuNjgyLTkuMjU5LDIwLjY4Mi0yMC42ODJDNTEyLDI0NC41NzgsNTAyLjc0MSwyMzUuMzE4LDQ5MS4zMTgsMjM1LjMxOHoiIGZpbGw9IiNhOGE4YTgiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00OTEuMzE4LDc4LjQzOUgyMC42ODJDOS4yNiw3OC40MzksMCw4Ny42OTksMCw5OS4xMjFjMCwxMS40MjIsOS4yNiwyMC42ODIsMjAuNjgyLDIwLjY4Mmg0NzAuNjM2ICAgIGMxMS40MjMsMCwyMC42ODItOS4yNiwyMC42ODItMjAuNjgyQzUxMiw4Ny42OTksNTAyLjc0MSw3OC40MzksNDkxLjMxOCw3OC40Mzl6IiBmaWxsPSIjYThhOGE4Ii8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDkxLjMxOCwzOTIuMTk3SDIwLjY4MkM5LjI2LDM5Mi4xOTcsMCw0MDEuNDU2LDAsNDEyLjg3OXM5LjI2LDIwLjY4MiwyMC42ODIsMjAuNjgyaDQ3MC42MzYgICAgYzExLjQyMywwLDIwLjY4Mi05LjI1OSwyMC42ODItMjAuNjgyUzUwMi43NDEsMzkyLjE5Nyw0OTEuMzE4LDM5Mi4xOTd6IiBmaWxsPSIjYThhOGE4Ii8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=="
+		}
 	},
 	methods:{
 		getPostList: getPostList,
-		clickBrushIcon: clickBrushIcon
+		clickBrushIcon: clickBrushIcon,
+		clickMenuIcon: function(){
+			console.log("click")
+			this.open = !this.open;
+		}
 	}
 })
 

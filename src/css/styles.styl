@@ -108,76 +108,84 @@ ul.circle
 	z-index: 2
 	font-family: 'Open Sans', '微軟正黑體', 'sans-serif'
 
-.title
-	font-size: 1.5em
-	position: relative
-	margin: 20px
-	margin-left: 60px
-	letter-spacing: 0.15em
-	cursor: default
-	
-.menu
-	position: absolute
-	margin-top: 17px
-	right: 50px
-	
-	li
-		float: left
-		margin-top: 10px
-		margin-right: 20px
-		color: #999
-		cursor: pointer
-		
-	li:hover
-		transition: color 0.2s
-		color: #8bbaba
-		
-		svg:hover
-			transition: color 0.2s
-			fill: rgb(139, 186, 186)
-		
-	.current
-		color: #444
-		
-	.icon
+	.title
+		font-size: 1.5em
 		position: relative
-		top: -2px
-		width: 18px
-		height: 18px
+		margin: 20px
+		margin-left: 60px
+		letter-spacing: 0.15em
+		cursor: default
 		
-	input
-		float: left
-		margin-right: 0
-		margin-top: 5px
-		padding-left: 7px
-		padding-right: 7px
-		width: 80px
-		height: 25px
-		border: 1px #ddd solid
-		border-right: 0px
-		color: #999
+	.menu
+		position: absolute
+		margin-top: 17px
+		right: 50px
 		
-	input:focus
-		outline: none
-		
-	button
-		margin-top: 5px
-		width: 25px
-		height: 25px
-		padding: 4px
-		background-color: primaryLight
-		// background-color: #ccc
-		text-decoration: none
-		border: 0px
-		
-	.fa
-		color: #fff
-		
-	img
-		width: 100%
-		
-	button:focus
-		outline: none	
+		li
+			float: left
+			margin-top: 10px
+			margin-right: 20px
+			color: #999
+			cursor: pointer
+			
+		li:hover
+			transition: color 0.2s
+			color: #8bbaba
+			
+			svg:hover
+				transition: color 0.2s
+				fill: rgb(139, 186, 186)
+			
+		.current
+			color: #444
+			
+		.icon
+			position: relative
+			top: -2px
+			width: 18px
+			height: 18px
+			
+		input
+			float: left
+			margin-right: 0
+			margin-top: 5px
+			padding-left: 7px
+			padding-right: 7px
+			width: 80px
+			height: 25px
+			border: 1px #ddd solid
+			border-right: 0px
+			color: #999
+			
+		input:focus
+			outline: none
+			
+		button
+			margin-top: 5px
+			width: 25px
+			height: 25px
+			padding: 4px
+			background-color: primaryLight
+			// background-color: #ccc
+			text-decoration: none
+			border: 0px
+			
+		.fa
+			color: #fff
+			
+		img
+			width: 100%
+			
+		button:focus
+			outline: none	
+			
+	.menuBtn
+		position: absolute
+		margin-top: 20px
+		right: 25px
+		img
+			width: 20px
+			height: 20px
 		
 .drawCtrl
 	position: fixed
@@ -258,3 +266,33 @@ ul.circle
 	
 	a
 		color: #444
+
+@media (min-width:530px)
+	.header
+		.menuBtn
+			display:none
+
+@media (max-width:530px)
+	.header
+		.title
+			margin-left: 30px
+		.menu
+			background-color: #f1f1f1
+			right: 10px
+			margin-top: 46px
+			padding: 5px
+			padding-left: 8px;
+			padding-right: 8px
+			border: 1px solid #ddd
+			border-radius: 3px
+			// display: none
+			li
+				float: none
+				margin: 0px
+				padding-top: 8px
+				padding-bottom: 8px
+			input
+				display: none
+	.container
+		.postList
+			padding-left: 0px

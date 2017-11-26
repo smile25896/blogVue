@@ -20,7 +20,10 @@
 	<!-- 最上面的header -->
 	<div class="header">
 		<h1 class="title">{{title}}</h1>
-		<ul class="menu">
+		<div class="menuBtn" v-on:click="clickMenuIcon">
+			<img v-bind:src="icon.menu" />
+		</div>
+		<ul class="menu" v-if="!mobile || open">
 			<li v-for="(item, index) in menu" v-bind:class="{current: current == index}" v-on:click="getPostList()">{{item}}</li>
 			<li class="drawBtn" v-html="icon.brush" v-on:click="clickBrushIcon()"></li>
 			<input type="text" name="">
