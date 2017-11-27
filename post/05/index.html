@@ -1,0 +1,152 @@
+<h1>JavaScript30：第四天筆記</h1>
+
+<h2 class="primary">實現目標</h2>
+<p>
+	熟悉JavaScript基本的Array操作。
+</p>
+<h2 class="primary">詳細步驟：</h2>
+<blockquote>
+	<ol>
+		<li>1.  選出發明家(inventors)中，1500's出生的人。</li>
+		<li>2.  印出發明家(inventors)的first name和last name。</li>
+		<li>3.  對發明家(inventors)依照出生日期，由老到少排序。</li>
+		<li>4.  計算所有發明家(inventors)一共活了多久。</li>
+		<li>5.  依照發明家(inventors)活的時間，由長到短排序。</li>
+		<li>6.  列出一個網站中，含有'de'的地方。</li>
+		<li>7.  依照last name對人們(people)做排序。</li>
+		<li>8.  統計出data各個物品的數量。</li>
+	</ol>
+</blockquote>
+
+<h3>
+	1.  選出發明家(inventors)中，1500's出生的人。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter()</a>會篩選出結果是true的項目後，組成陣列並回傳。
+</p>
+<pre><code class="javascript">const fifteen = 
+  inventors.filter(function(inventor){
+  if(inventor.year >= 1500 && inventor.year < 1600){
+    return true;
+  }
+  else{
+    return false
+  }
+});
+console.table(fifteen);</code></pre>
+
+<p class="small">
+	簡化寫法！用箭頭函數寫：<br>
+	<span class='highLight'>(param1, param2, …, paramN) => { statements } </span><br>
+	<span class='highLight'>(param1, param2, …, paramN) => ( return值 ) </span>
+</p>
+<pre><code class="javascript">const fifteen = 
+  inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
+console.table(fifteen);</code></pre>
+
+
+<h3>
+	2.  印出發明家(inventors)的first name和last name。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map()</a>對原陣列作處理後，組成新的陣列並回傳。<br>
+</p>
+<pre><code class="javascript">const fullNames = 
+  inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+console.log(fullNames);</code></pre>
+
+
+<h3>
+	3.  對發明家(inventors)依照出生日期，由老到少排序。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort()</a>對陣列做排序，可以自訂一個function compare(a, b)。<br>
+	若回傳<0，則將a排在b之前。<br>
+	若回傳>0，則將b排在a之前。<br>
+	若回傳=0，則不改變a,b順序。<br>
+</p>
+<pre><code class="javascript">const orderd = 
+  inventors.sort((inventor1, inventor2) => (inventor1.year-inventor2.year));
+console.table(orderd);</code></pre>
+
+
+<h3>
+	4.  計算所有發明家(inventors)一共活了多久。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">reduce()</a>將數值加到accumulator中，便能計算總合。
+</p>
+<pre><code class="javascript">const totalYears = 
+  inventors.reduce((sum, inventor) => (sum+inventor.passed-inventor.year),0);
+console.log(totalYears);</code></pre>
+
+
+<h3>
+	5.  依照發明家(inventors)活的時間，由長到短排序。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort()</a>:同第三題的用法。
+</p>
+<pre><code class="javascript">const orderd2 = inventors.sort((inventor1, inventor2) => {
+  const lived1 = inventor1.passed-inventor1.year;
+  const lived2 = inventor2.passed-inventor2.year;
+  return lived1 < lived2 ? 1 : -1;
+});</code></pre>
+
+
+<h3>
+	6.  列出一個網站中，含有'de'的地方。
+</h3>
+
+<p class="small">
+	<a href="https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris">https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris</a><br>
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/from">from()</a>:能將類陣列(array-like)或是可迭代的物件建立一個新的陣列。<br>
+	先選取class為mw-category以及tag a。
+</p>
+<pre><code class="javascript">const category = document.querySelector('.mw-category');
+const links = Array.from(category.querySelectorAll('a'));</code></pre>
+
+<p class="small">
+	將<span class="highLight">map()</span>和<span class="highLight">filter()</span>搭配使用，先用map將link中的textContent取出來，再丟給filter()去判斷是否含有'de'。
+</p>
+<pre><code class="javascript">const de = links
+  .map(link => link.textContent)
+  .filter(streetName => streetName.includes('de'));</code></pre>
+
+
+<h3>
+	7.  依照last name對人們(people)做排序。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort()</a>:同第三題的用法。
+</p>
+<pre><code class="javascript">const orderd3 = people.sort((pA, pB) => {
+  const [aLast, aFirst] = pA.split(', ');
+  const [bLast, bFirst] = pB.split(', ');
+  return aLast > bLast ? 1 : -1;	
+});
+console.log(orderd3);</code></pre>
+
+
+<h3>
+	8.  統計出data各個物品的數量。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">reduce()</a>:同第三題的用法。<br>
+	若!sum[i]，則初始sum[i]為0，否則讓sum[i]++。
+</p>
+<pre><code class="javascript">const count = data.reduce((sum, item) => {
+  if(!sum[item]){
+    sum[item] = 0;
+  }
+  sum[item]++;
+  return sum;
+}, {});
+console.log(count);</code></pre>
