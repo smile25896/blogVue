@@ -1,0 +1,130 @@
+<h1>JavaScript30：第五天筆記</h1>
+
+<img src="/post/07/01.png">
+
+<h2 class="primary">實現目標</h2>
+<p>
+	點擊圖片時，圖片會展開如上圖、中間的字體會放大，之後上下飛入文字，再點一次或是點其他圖片，原先的會恢復原狀。
+</p>
+
+原本長這樣：
+<img src="/post/07/02.png">
+
+<h2 class="primary">詳細步驟：</h2>
+<blockquote>
+	<ol>
+		<li>1.  用flex排版，達到目標效果。</li>
+		<li>2.  點擊時圖片展開，並調整字體大小。</li>
+		<li>3.  文字從上下飛入</li>
+	</ol>
+</blockquote>
+
+<h3>
+	1.  用flex排版，達到目標效果。
+</h3>
+
+<p class="small">
+	<a class='highLight' target="_blank" href="http://www.oxxostudio.tw/articles/201501/css-flexbox.html">flex</a>是CSS的一個屬性。<br>
+	為了讓panel們，排版方法照flex排列，先對他們的parent也就是panels設定：
+</p>
+<pre><code class="css">.panels {
+  display: flex;
+}</code></pre>
+<p class="small">
+	之後讓他們每個panel佔的比例都是1：
+</p>
+<pre><code class="css">.panel {
+  flex: 1;
+}</code></pre>
+<p class="small">
+	flex預設是由左至右排列，所以目前調整完會呈現以下畫面。<br>
+	若要改變成由上到下排列，可調整<span class="highLight">flex-direction</span>屬性。<br>
+	<span class="highLight">row</span>:由左到右排列。<br>
+	<span class="highLight">row-reverse</span>:由右到左排列。<br>
+	<span class="highLight">column</span>:由上到下排列。<br>
+	<span class="highLight">column-reverse</span>:由下到上排列。<br>
+	<img src="/post/07/03.png">
+</p>
+
+<p class="small">
+	為了讓panel裡的文字也分成三等份，將panel裡的排版方法也照flex排列。
+	並調整成上到下排列。
+</p>
+<pre><code class="css">.panel {
+  display: flex;
+  flex-direction: column;
+}
+.panel p{
+  flex: 1;
+}</code></pre>
+
+<p class="small">
+	除此之外，每個&lt;p&gt;裡的文字也需要垂直水平置中，所以：
+</p>
+<pre><code class="css">.panel p {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+
+<p class="small">
+	接下來要讓panel裡第一、三個&lt;p&gt;分別往上和往下位移出畫面。<br>
+	<span class="highLight">transform: translateY(-100%)</span>: Y軸位移100%(&lt;p&gt;的100%)<br>
+	再設一個class為open-active則把translateY改回0，之後在JS設定若點擊該panel，則幫他加上open-active的class。
+</p>
+<pre><code class="css">.panel > *:first-child { transform: translateY(-100%); }
+.panel.open-active > *:first-child { transform: translateY(0); }
+.panel > *:last-child { transform: translateY(100%); }
+.panel.open-active > *:last-child { transform: translateY(0); }</code></pre>
+
+<p class="small">
+	做到這裡CSS的部分差不多了，會呈現下圖的畫面。
+	<img src="/post/07/04.png">
+</p>
+
+<h3>
+	2.  點擊時圖片展開，並調整字體大小。
+</h3>
+
+<p class="small">
+	先為每一個panel綁定click事件。
+</p>
+<pre><code class="js">const panels = document.querySelectorAll('.panel');
+panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+}</code></pre>
+
+<p class="small">
+	<span class="highLight">toggleOpen</span>: 調整panel寬度和字體大小，將被點擊的panel套上已經寫好的open class。
+	在toggleOpen設定，若該panel原本不是open的，先去檢查其他panel有沒有open的，並把它remove掉open的class。<br>
+	再將該panel利用<span class="highLight">toggle</span>切換open class的狀態。<br>
+	<span class="highLight">classList.toggle</span>: 若有該class則remve，若無則add。
+</p>
+<pre><code class="js">function toggleOpen(){
+  if(!this.classList.contains('open')){
+    for(panel1 of panels){
+      panel1.classList.remove('open');
+    }
+  }
+  this.classList.toggle('open');
+}</code></pre>
+
+
+<h3>
+	3.  文字從上下飛入
+</h3>
+
+<p class="small">
+	上述的轉場效果完成之後，接著上下要飛入文字。
+	將每個penel綁定<span class="highLight">transitionend</span>事件<br>
+	(當transition結束時會觸發)。
+</p>
+<pre><code class="js">panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));</code></pre>
+
+<p class="small">
+	如果該轉場效果是跟<span class="highLight">flex</span>相關，則用toggle切換open-active class的狀態。
+</p>
+<pre><code class="js">function toggleActive(e) {
+  if (e.propertyName.includes('flex')) {
+     this.classList.toggle('open-active');
+  }
+}</code></pre>
