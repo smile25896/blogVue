@@ -30,12 +30,15 @@ var container = new Vue({
 	el: '.container',
 	data:{
 		list: [],
-		post: ""
+		post: "",
+		animate: []
 	},
 	methods:{
 		getPostList: getPostList,
 		clickPost: clickPost,
-		highLight: highLight
+		highLight: highLight,
+		addAnimate: addAnimate,
+		rmAnimate: rmAnimate
 	},
 	created(){
 	 	this.getPostList();
@@ -206,6 +209,9 @@ function getPostList(){
 	.then(function(data){
 		container.post = "";
 		container.list = data.list;
+		for(i=0; i<data.list.length; i++){
+			container.animate[i] = false;
+		}
 		header.current = 0;
 	})
 	.catch(function(err) {
@@ -293,4 +299,14 @@ function highLight(){
 	document.querySelectorAll('pre code').forEach(function(block) {
 	  hljs.highlightBlock(block);
 	});	
+}
+
+function addAnimate(id){
+	id = parseInt(id)-1;
+	container.animate = [];
+	container.animate[id] = true;
+}
+
+function rmAnimate(id){
+	container.animate = [];
 }
